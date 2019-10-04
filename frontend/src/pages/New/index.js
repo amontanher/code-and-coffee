@@ -9,7 +9,7 @@ export default function New({history}){
     const [company, setCompany] = useState('');
     const [techs, setTechs] = useState('');
     const [price, setPrice] = useState('');
-    const [thumbnail, setThumbnail] = useState('');
+    const [thumbnail, setThumbnail] = useState(null);
 
     const preview = useMemo(
         ()=>{return thumbnail ? URL.createObjectURL(thumbnail) : null},
@@ -33,8 +33,8 @@ export default function New({history}){
     return(
         <form onSubmit={handleSubmit}>
 
-            <label 
-                id="thumbnail" 
+            <label
+                id="thumbnail"
                 style={{backgroundImage: `url(${preview})`}}
                 className={thumbnail ? 'has-thumbnail': ''}
             >
@@ -45,7 +45,7 @@ export default function New({history}){
             <label htmlFor="company">Empresa</label>
             <input
                 id="company"
-                placeholder="Sua empresa e-mail"
+                placeholder="Sua empresa"
                 value={company}
                 onChange={event => setCompany(event.target.value)}
             />
@@ -61,7 +61,7 @@ export default function New({history}){
             <label htmlFor="price">Valor da Diária <span>(em branco para GRATUITO)</span></label>
             <input
                 id="price"
-                placeholder="Quais suas tecnologias?"
+                placeholder="Qual o valor?"
                 value={price}
                 onChange={event => setPrice(event.target.value)}
             />

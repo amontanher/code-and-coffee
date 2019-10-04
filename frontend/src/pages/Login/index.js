@@ -11,8 +11,6 @@ export default function Login({ history }){
 
       const { _id } = response.data;
 
-      console.log(_id);
-
       //BD do navegador
       localStorage.setItem('user', _id);
 
