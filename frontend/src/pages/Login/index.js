@@ -9,10 +9,12 @@ export default function Login({ history }){
       event.preventDefault();
       const response = await api.post('/sessions', {email});
 
-      const {id} = response.data;
+      const { _id } = response.data;
+
+      console.log(_id);
 
       //BD do navegador
-      localStorage.setItem('user', id);
+      localStorage.setItem('user', _id);
 
       history.push('/dashboard');
     }
