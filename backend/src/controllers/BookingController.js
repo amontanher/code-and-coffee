@@ -12,15 +12,14 @@ module.exports = {
             date,
         });
 
-        await booking.populate('spot').populate('user').execPopulate()
+        await booking.populate('spot').populate('user').execPopulate();
 
         const ownerSpotSocket = req.connectedUsers[booking.spot.user];
-        console.log(ownerSpotSocket);
-        //enviar mensagem para dono do spot
+
         if(ownerSpotSocket){
             req.io.to(ownerSpotSocket).emit('booking_request', booking);
         }
 
-        return res.json(booking)
+        return res.json(booking);
     }
 };
